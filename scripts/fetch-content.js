@@ -36,17 +36,37 @@ const STATE_RETENTION_DAYS = 90;
 // Supadata API base URL
 const SUPADATA_BASE = 'https://api.supadata.ai/v1';
 
+// URL to fetch the latest default sources from GitHub
+// This ensures users always get the most up-to-date builder list
+// without needing to git pull or reinstall the skill
+const REMOTE_SOURCES_URL = 'https://raw.githubusercontent.com/zarazhangrui/follow-builders/main/config/default-sources.json';
+
 // -- Config Loading ----------------------------------------------------------
 
 // Loads the user's config.json and merges it with default sources.
 // The merge logic: start with all defaults, then add user additions and
 // remove user removals. This way users can customize without losing defaults.
+//
+// Default sources are fetched from GitHub so users automatically get
+// the latest curated list. Falls back to the local file if offline.
 async function loadConfig() {
-  // Load the default sources that ship with the skill
-  // decodeURIComponent handles spaces and special chars in directory names
-  const scriptDir = decodeURIComponent(new URL('.', import.meta.url).pathname);
-  const defaultSourcesPath = join(scriptDir, '..', 'config', 'default-sources.json');
-  const defaultSources = JSON.parse(await readFile(defaultSourcesPath, 'utf-8'));
+  // Try to fetch the latest default sources from GitHub
+  // If that fails (offline, rate-limited, etc.), fall back to the local copy
+  let defaultSources;
+  try {
+    const res = await fetch(REMOTE_SOURCES_URL);
+    if (res.ok) {
+      defaultSources = await res.json();
+      console.error('[Config] Loaded latest sources from GitHub');
+    } else {
+      throw new Error(`GitHub returned ${res.status}`);
+    }
+  } catch (err) {
+    console.error(`[Config] Could not fetch remote sources (${err.message}), using local copy`);
+    const scriptDir = decodeURIComponent(new URL('.', import.meta.url).pathname);
+    const defaultSourcesPath = join(scriptDir, '..', 'config', 'default-sources.json');
+    defaultSources = JSON.parse(await readFile(defaultSourcesPath, 'utf-8'));
+  }
 
   // Load user config (may not exist yet on first run)
   let userConfig = {};
