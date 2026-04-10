@@ -25,6 +25,7 @@ import { existsSync } from 'fs';
 import { join } from 'path';
 import { homedir } from 'os';
 import { config as loadEnv } from 'dotenv';
+import { marked } from 'marked';
 
 // -- Constants ---------------------------------------------------------------
 
@@ -124,9 +125,36 @@ async function sendTelegram(text, botToken, chatId) {
 
 // -- Email Delivery (Resend) -------------------------------------------------
 
+// Convierte el digest markdown a HTML sobrio. Sin distracciones: negro sobre
+// blanco, jerarquia tipografica, enlaces grises, sin bordes ni colores de
+// marca. Mantiene el texto plano como fallback para clientes sin HTML.
+function markdownToEmailHtml(markdown) {
+  // Render markdown -> HTML
+  let body = marked.parse(markdown, { gfm: true, breaks: false });
+
+  // Inyectar estilos inline porque la mayoria de email clients strip <style>
+  body = body
+    .replace(/<h1>/g, '<h1 style="font-size:20px;font-weight:700;margin:0 0 24px;line-height:1.3;color:#111;">')
+    .replace(/<h2>/g, '<h2 style="font-size:16px;font-weight:700;margin:36px 0 14px;line-height:1.3;color:#111;text-transform:uppercase;letter-spacing:0.04em;">')
+    .replace(/<h3>/g, '<h3 style="font-size:15px;font-weight:700;margin:24px 0 8px;line-height:1.4;color:#111;">')
+    .replace(/<p>/g, '<p style="margin:0 0 12px;color:#222;">')
+    .replace(/<a /g, '<a style="color:#555;text-decoration:underline;word-break:break-all;" ')
+    .replace(/<strong>/g, '<strong style="font-weight:700;color:#111;">')
+    .replace(/<em>/g, '<em style="font-style:italic;">')
+    .replace(/<hr>/g, '<hr style="border:none;border-top:1px solid #eee;margin:32px 0;">');
+
+  return `<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#ffffff;">
+<div style="max-width:640px;margin:0 auto;padding:32px 28px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:15px;line-height:1.65;color:#222;">
+${body}
+</div></body></html>`;
+}
+
 // Sends the digest via Resend's email API.
 // The user provides their own Resend API key and email address.
 async function sendEmail(text, apiKey, toEmail) {
+  const html = markdownToEmailHtml(text);
   const res = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: {
@@ -139,7 +167,8 @@ async function sendEmail(text, apiKey, toEmail) {
       subject: `Digest de Builders de IA — ${new Date().toLocaleDateString('es-ES', {
         weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
       })}`,
-      text: text
+      text: text,
+      html: html
     })
   });
 
