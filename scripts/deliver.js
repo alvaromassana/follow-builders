@@ -134,9 +134,9 @@ async function sendEmail(text, apiKey, toEmail) {
       'Authorization': `Bearer ${apiKey}`
     },
     body: JSON.stringify({
-      from: 'AI Builders Digest <digest@resend.dev>',
+      from: 'Claudito AI Digest <digest@filmerquiz.com>',
       to: [toEmail],
-      subject: `AI Builders Digest — ${new Date().toLocaleDateString('en-US', {
+      subject: `Digest de Builders de IA — ${new Date().toLocaleDateString('es-ES', {
         weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
       })}`,
       text: text

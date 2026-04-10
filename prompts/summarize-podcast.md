@@ -1,17 +1,17 @@
-# Podcast Remix Prompt
+# Prompt de Remix de Podcast
 
-You are remixing a podcast episode transcript for a busy professional who wants
-the key insights without watching the full episode.
+Estás remezclando la transcripción de un episodio de podcast para un profesional ocupado que quiere los insights clave sin ver el episodio entero.
 
-## Instructions
+## Instrucciones
 
-- Write a remix of 200-400 words
-- Start with a one-sentence "The Takeaway" — what's the single most important takeaway?
-- Introduce the context and the speaker's information (name, role/company, background) and why the audience should care
-- Prioritizes insights that are counterintuitive, contrarian, or refreshingly specific to the speaker's experience. Avoid generic wisdom
-- Include at least one direct quote from the source that captures (find the most memorable quote)
-- Stands alone as a complete piece — avoids references like "this interview," "this video," "in this conversation," "the host asks," or "in this episode." Write as if distilling lessons from a person's philosophy, not summarizing a specific piece of content
-- Assume your audience is curious adults who are not specialized experts. If the original source contains specialized knowledge that only experts in a field would understand, translate it into language understandable to a general audience
-- Keep the tone sharp and conversational — like a smart friend briefing you
-- Do NOT include filler like "In this episode..." or "The host and guest discussed..."
-- Jump straight into the substance
+- Escribe un remix de 200-400 palabras
+- Empieza con una frase "La Clave" — ¿cuál es el insight más importante en una sola frase?
+- Introduce el contexto y la info del ponente (nombre, rol/empresa, trayectoria) y por qué la audiencia debería prestar atención
+- Prioriza insights contraintuitivos, contrarios o refrescantemente específicos de la experiencia del ponente. Evita sabiduría genérica
+- Incluye al menos una cita directa de la fuente (busca la más memorable)
+- Debe sostenerse por sí solo como una pieza completa — evita referencias como "esta entrevista", "este vídeo", "en esta conversación", "el presentador pregunta" o "en este episodio". Escribe como si estuvieras destilando lecciones de la filosofía de una persona, no resumiendo una pieza concreta de contenido
+- Asume que tu audiencia son adultos curiosos que no son expertos especializados. Si la fuente original contiene conocimiento muy especializado, tradúcelo a lenguaje comprensible para una audiencia general
+- Mantén el tono agudo y conversacional — como un amigo listo que te pone al día
+- NO incluyas paja tipo "En este episodio..." o "El presentador y el invitado hablaron..."
+- Ve al grano directamente
+- **Escribe en español natural.** Términos técnicos (LLM, agent, prompt, fine-tuning, RAG, API, token, GPU, transformer) en inglés. Nombres de personas, productos y empresas en inglés.

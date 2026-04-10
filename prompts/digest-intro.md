@@ -1,59 +1,58 @@
-# Digest Intro Prompt
+# Prompt de Introducción al Digest
 
-You are assembling the final digest from individual source summaries.
+Estás ensamblando el digest final a partir de los resúmenes individuales de cada fuente.
 
-## Format
+## Formato
 
-Start with this header (replace [Date] with today's date):
+Empieza con esta cabecera (sustituye [Fecha] por la fecha de hoy):
 
-AI Builders Digest — [Date]
+Digest de Builders de IA — [Fecha]
 
-Then organize content in this order:
+Luego organiza el contenido en este orden:
 
-1. X / TWITTER section — list each builder with new posts
-2. OFFICIAL BLOGS section — list each blog post from AI company blogs (OpenAI, Anthropic, etc.)
-3. PODCASTS section — list each podcast with new episodes
+1. Sección X / TWITTER — lista cada builder con sus nuevos posts
+2. Sección BLOGS OFICIALES — lista cada artículo de los blogs oficiales de empresas de IA (OpenAI, Anthropic, etc.)
+3. Sección PODCASTS — lista cada podcast con los nuevos episodios
 
-## Rules
+## Reglas
 
-- Only include sources that have new content
-- Skip any source with nothing new
-- Under each source, paste the individual summary you generated
+- Solo incluye fuentes que tengan contenido nuevo
+- Omite cualquier fuente que no tenga nada nuevo
+- Bajo cada fuente, pega el resumen individual que has generado
 
-### Podcast links
-- After each podcast summary, include the specific video URL from the JSON `url` field
-  (e.g. https://youtube.com/watch?v=Iu4gEnZFQz8)
-- NEVER link to the channel page. Always link to the specific video.
-- Include the exact episode title from the JSON `title` field in the heading
+### Enlaces de podcasts
+- Después de cada resumen de podcast, incluye la URL específica del vídeo desde el campo `url` del JSON
+  (p. ej. https://youtube.com/watch?v=Iu4gEnZFQz8)
+- NUNCA enlaces a la página del canal. Siempre al vídeo concreto.
+- Incluye el título exacto del episodio desde el campo `title` del JSON en el encabezado
 
-### Tweet author formatting
-- Use the author's full name and role/company, not just their last name
-  (e.g. "Box CEO Aaron Levie" not "Levie")
-- NEVER write Twitter handles with @ in the digest. On Telegram, @handle becomes
-  a clickable link to a Telegram user, which is wrong. Instead write handles
-  without @ (e.g. "Aaron Levie (levie on X)" or just use their full name)
-- Include the direct link to each tweet from the JSON `url` field
+### Formato de autores de tweets
+- Usa el nombre completo del autor y su rol/empresa, no solo el apellido
+  (p. ej. "Aaron Levie, CEO de Box", no "Levie")
+- NUNCA escribas los handles de Twitter con @ en el digest. En clientes de email, @handle puede convertirse en un enlace incorrecto. Escribe los handles sin @ (p. ej. "Aaron Levie (levie en X)" o simplemente usa su nombre completo)
+- Incluye el enlace directo a cada tweet desde el campo `url` del JSON
 
-### Blog post formatting
-- Use the blog name as a section header (e.g. "Anthropic Engineering", "OpenAI News", "Claude Blog")
-- Under each blog, list each new post with its title and summary
-- Include the author name if available
-- Include the direct link to the original article
+### Formato de posts de blog
+- Usa el nombre del blog como encabezado de sección (p. ej. "Anthropic Engineering", "OpenAI News", "Claude Blog")
+- Bajo cada blog, lista cada post nuevo con su título y resumen
+- Incluye el autor si está disponible
+- Incluye el enlace directo al artículo original
 
-### Mandatory links
-- Every single piece of content MUST have an original source link
-- Blog posts: the direct article URL (e.g. https://www.anthropic.com/engineering/...)
-- Podcasts: the YouTube video URL (e.g. https://youtube.com/watch?v=xxx)
-- Tweets: the direct tweet URL (e.g. https://x.com/levie/status/xxx)
-- If you don't have a link for something, do NOT include it in the digest.
-  No link = not real = do not include.
+### Enlaces obligatorios
+- CADA pieza de contenido DEBE tener un enlace a la fuente original
+- Posts de blog: la URL directa del artículo (p. ej. https://www.anthropic.com/engineering/...)
+- Podcasts: la URL del vídeo de YouTube (p. ej. https://youtube.com/watch?v=xxx)
+- Tweets: la URL directa del tweet (p. ej. https://x.com/levie/status/xxx)
+- Si no tienes enlace para algo, NO lo incluyas en el digest.
+  Sin enlace = no es real = no se incluye.
 
-### No fabrication
-- Only include content that came from the feed JSON (blogs, podcasts, and tweets)
-- NEVER make up quotes, opinions, or content you think someone might have said
-- NEVER speculate about someone's silence or what they might be working on
-- If you have nothing real for a builder, skip them entirely
+### Nada de inventar
+- Solo incluye contenido que venga del JSON del feed (blogs, podcasts y tweets)
+- NUNCA te inventes citas, opiniones ni contenido que creas que alguien pudo haber dicho
+- NUNCA especules sobre el silencio de alguien ni sobre lo que pudiera estar trabajando
+- Si no tienes nada real sobre un builder, omítelo entero
 
 ### General
-- At the very end, add a line: "Generated through the Follow Builders skill: https://github.com/zarazhangrui/follow-builders"
-- Keep formatting clean and scannable — this will be read on a phone screen
+- Al final del todo, añade una línea: "Generado con la skill Follow Builders (fork Websalia): https://github.com/alvaromassana/follow-builders"
+- Mantén el formato limpio y escaneable — esto se leerá en una pantalla de móvil
+- **Idioma del digest: español.** Los nombres propios de personas, productos y empresas y los términos técnicos (LLM, agent, prompt, fine-tuning, transformer, RAG, API, token, GPU) se dejan en inglés. Todo lo demás en español natural.

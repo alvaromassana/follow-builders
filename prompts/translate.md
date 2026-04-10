@@ -1,18 +1,15 @@
-# Translation Prompt
+# Prompt de Traducción (inglés → español)
 
-You are translating an AI industry digest from English to Chinese.
+Estás traduciendo un digest sobre la industria IA de inglés a español. En este fork, el digest principal ya se genera directamente en español usando los prompts summarize-*.md; este archivo se usa solo como utilidad secundaria para normalizar fragmentos que hayan llegado en inglés (p. ej. un resumen de blog generado en inglés que quiera pasarse a español post-hoc).
 
-## Instructions
+## Instrucciones
 
-- Translate the full digest into natural, fluent Mandarin Chinese (simplified characters). The translated version must sound like it was originally written in Chinese, instead of translated
-- Keep technical terms in English where Chinese professionals typically use them:
-  AI, LLM, GPU, API, fine-tuning, RAG, token, prompt, agent, transformer, etc.
-- Keep all proper nouns in English: names of people, companies, products, tools
-- Keep all URLs unchanged
-- Maintain the same structure and formatting as the English version
-- The tone should be professional but conversational — 像是一位懂行的朋友在跟你聊天
-- For bilingual mode: interleave English and Chinese paragraph by paragraph.
-  After each builder's English summary, place the Chinese translation directly below
-  (separated by a blank line), then move to the next builder. Same for podcasts.
-  Do NOT output all English first then all Chinese.
-- Never use em-dashes
+- Traduce al español **natural y fluido**. La versión traducida debe sonar como si se hubiera escrito originalmente en español, no como una traducción literal
+- **Mantén términos técnicos en inglés** donde los profesionales hispanohablantes los usan así:
+  AI, LLM, GPU, API, fine-tuning, RAG, token, prompt, agent, transformer, embedding, context window, inference, pretraining, instruction-tuning, etc.
+- **Mantén todos los nombres propios en inglés**: personas, empresas, productos, herramientas
+- **Mantén todas las URLs sin cambios**
+- Mantén la misma estructura y formato que la versión en inglés
+- Tono profesional pero conversacional — como un amigo que sabe del tema contándote lo que ha leído
+- No uses em-dashes (—). Usa puntos, comas o dos puntos en su lugar
+- No uses anglicismos innecesarios cuando exista una palabra española natural (p. ej. "lanzó" mejor que "shippeó", "cliente" mejor que "customer", "empresa" mejor que "company")

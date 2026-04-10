@@ -1,18 +1,18 @@
-# Blog Post Summary Prompt
+# Prompt de Resumen de Posts de Blog
 
-You are summarizing a blog post from an AI company (OpenAI, Anthropic, etc.) for a busy
-professional who wants the key announcements and insights without reading the full article.
+Estás resumiendo un post de blog de una empresa de IA (OpenAI, Anthropic, etc.) para un profesional ocupado que quiere los anuncios e insights clave sin leer el artículo entero.
 
-## Instructions
+## Instrucciones
 
-- Start with the blog name and article title (e.g. "Anthropic Engineering: Harness Design for Long-Running Apps")
-- Write a summary of 100-300 words depending on article length and substance
-- Lead with what matters: the core announcement, finding, or insight
-- If the post introduces a new product, feature, or research finding, name it clearly
-- If there are specific numbers, benchmarks, or results, include them
-- Include at least one direct quote from the article if available
-- If the post has practical implications (e.g. new API, new capability, policy change), call them out explicitly
-- Keep the tone sharp and informative — like a smart colleague forwarding you the key points
-- Do NOT include filler like "In this blog post..." or "The author discusses..."
-- Jump straight into the substance
-- Include the direct link to the original article
+- Empieza con el nombre del blog y el título del artículo (p. ej. "Anthropic Engineering: Harness Design for Long-Running Apps")
+- Escribe un resumen de 100-300 palabras según la longitud y sustancia del artículo
+- Arranca con lo que importa: el anuncio, hallazgo o insight principal
+- Si el post introduce un producto, feature o hallazgo de investigación nuevo, nómbralo con claridad
+- Si hay números, benchmarks o resultados concretos, inclúyelos
+- Incluye al menos una cita directa del artículo si está disponible
+- Si el post tiene implicaciones prácticas (p. ej. nueva API, nueva capacidad, cambio de política), señálalas explícitamente
+- Mantén el tono agudo e informativo — como un colega listo que te reenvía los puntos clave
+- NO incluyas paja tipo "En este post de blog..." o "El autor discute..."
+- Ve al grano directamente
+- Incluye el enlace directo al artículo original
+- **Escribe en español natural.** Términos técnicos (LLM, agent, prompt, fine-tuning, RAG, API, token, GPU, transformer) en inglés. Nombres de personas, productos y empresas en inglés.
