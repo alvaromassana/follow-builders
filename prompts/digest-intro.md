@@ -56,3 +56,65 @@ Luego organiza el contenido en este orden:
 - Al final del todo, añade una línea: "Generado con la skill Follow Builders (fork Websalia): https://github.com/alvaromassana/follow-builders"
 - Mantén el formato limpio y escaneable — esto se leerá en una pantalla de móvil
 - **Idioma del digest: español.** Los nombres propios de personas, productos y empresas y los términos técnicos (LLM, agent, prompt, fine-tuning, transformer, RAG, API, token, GPU) se dejan en inglés. Todo lo demás en español natural.
+
+## Triage: sección "Candidatos detectados" al final
+
+Antes del footer, añade una sección `## Candidatos detectados` con los items que menciones tools/repos/features concretos evaluables. No analices aquí — solo lista. El scout real lo ejecuta Álvaro manualmente.
+
+### Reglas de clasificación
+
+Clasifica cada item del feed en una de tres categorías (usa tu criterio leyendo el contenido):
+
+- **POINTABLE** — menciona una herramienta, repo, CLI, MCP server, skill, API o feature nueva con URL o nombre concreto. Candidato a scout.
+- **PATTERN** — describe una técnica replicable sin link a producto (ej: "uso X para Y haciendo Z"). Documentable en `vault/system/techniques/` sin scout.
+- **INFORMATIVE** — opinión/análisis de mercado/hype/humor/observación lateral sin acción derivable. Skip.
+
+### Pre-filtros obligatorios
+
+Antes de listar un item como candidato:
+
+1. **Dedup contra scouts previos**: el contexto te pasa una lista `already_scouted_slugs`. Si el target coincide con un slug ya evaluado → skip con nota breve "dedup".
+2. **Lista negra recurrente**: el contexto te pasa `non_candidates` (gente cuyo contenido suele ser INFORMATIVE). Si el post viene de esa lista y no es una excepción clara → skip.
+3. **Empresas proveedor conocidas**: skip OpenAI, Anthropic, Google, Microsoft, Meta, Amazon, Vercel, Cloudflare, Railway, Replit, Cursor, GitHub, GitLab — son infraestructura base, no targets de scout.
+
+### Formato de la sección
+
+```markdown
+## Candidatos detectados
+
+> Para ejecutar scouts, hazlo desde tu sesión **Opus** (no escatimar calidad en investigación).
+
+### 🔗 <nombre del target> (POINTABLE)
+
+Breve de una frase. Mencionado por <Builder>. Por qué es relevante para el sistema: <1 frase>.
+
+`/scout <url o target>`
+
+### 🔗 <nombre del target> (POINTABLE)
+
+...
+
+### 📐 <nombre del patrón> (PATTERN)
+
+Breve de una frase. Documentable sin scout. Mencionado por <Builder>.
+```
+
+Si no hay candidatos en un día concreto, añade: "Hoy sin candidatos. Todo el contenido fue INFORMATIVE."
+
+No incluyas INFORMATIVE items en esta sección. No incluyas tu razonamiento, solo la lista final.
+
+### Persistencia
+
+Antes de enviar el email, escribe también la sección de candidatos como JSON estructurado en `/home/alvaro/vault/shared/tasks/ai-digest-candidates/<YYYY-MM-DD>.json` para trazabilidad histórica:
+
+```json
+{
+  "date": "YYYY-MM-DD",
+  "candidates": [
+    {"type": "POINTABLE", "target": "...", "url": "...", "source_builder": "...", "source_post_url": "...", "relevance": "..."}
+  ],
+  "skipped_dedup": ["slug1", "slug2"],
+  "skipped_non_candidates": ["builder1", "builder2"]
+}
+```
+
